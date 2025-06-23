@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>رسالة خاصة إلى ملك</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 1s;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+        
+        /* صفحة الدخول */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+            margin: 15px;
+        }
+        
+        .login-container h2 {
+            color: #d23669;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #6d3b47;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #f3c4d6;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .input-group input:focus {
+            border-color: #d23669;
+            outline: none;
+        }
+        
+        .login-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .login-btn:hover, .login-btn:active {
+            background-color: #d23669;
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            color: #ff4757;
+            margin-top: 12px;
+            display: none;
+            font-size: 0.85rem;
+        }
+        
+        /* صفحة الرسالة */
+        .message-container {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 500px;
+            animation: fadeIn 0.8s;
+            text-align: center;
+            margin: 15px;
+        }
+        
+        .message-container h1 {
+            color: #d23669;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .message-container p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #6d3b47;
+        }
+        
+        .heart {
+            font-size: 2.5rem;
+            color: #ff4757;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            animation: pulse 1.5s infinite;
+            margin: 10px 0;
+            user-select: none;
+        }
+        
+        .heart:active {
+            transform: scale(1.2);
+        }
+        
+        .hidden-message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #fff4f6;
+            border-radius: 8px;
+            animation: slideUp 0.8s;
+        }
+        
+        .hidden-message p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .flowers {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            display: none;
+            top: 0;
+            left: 0;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            animation: float 8s infinite ease-in-out;
+            user-select: none;
+        }
+        
+        /* الأنيميشنات */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 400px) {
+            .login-container, .message-container {
+                padding: 20px 15px;
+            }
+            
+            .login-container h2 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .message-container h1 {
+                font-size: 1.4rem;
+            }
+            
+            .input-group input {
+                padding: 10px 12px;
+            }
+            
+            .heart {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحة الدخول -->
+    <div class="login-container" id="loginContainer">
+        <h2>مرحباً بكِ في رسالتي الخاصة</h2>
+        <div class="input-group">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" id="username" placeholder="أدخل اسم المستخدم">
+        </div>
+        <div class="input-group">
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" placeholder="أدخل كلمة المرور">
+        </div>
+        <button class="login-btn" onclick="checkLogin()">دخول</button>
+        <div class="error-message" id="errorMessage">اسم المستخدم أو كلمة المرور غير صحيحة!</div>
+    </div>
+    
+    <!-- صفحة الرسالة -->
+    <div class="message-container" id="messageContainer">
+        <h1>إلى حبيبتي ملك ❤️</h1>
+        
+        <p>في كل لحظة تمر، أجد قلبي يتذكر كم أنتِ مميزة في حياتي.</p>
+        <p>شكراً لأنك في حياتي يا أجمل ملك.</p>
+        
+        <div class="heart" onclick="showMessage()">❤️</div>
+        
+        <div id="hiddenMessage" class="hidden-message">
+            <p>بحبك يا بطه وبحب كل حاجه فيكي يا نوتي</p>
+            <p>بحبك اوي يا بطتتي ❤️</p>
+        </div>
+    </div>
+    
+    <div class="flowers" id="flowers"></div>
+
+    <script>
+        // منع تكبير الصفحة بالضغط المزدوج على الجوال
+        document.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+        
+        // منع التكبير بالضغط المطول
+        document.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        function checkLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // البيانات الصحيحة
+            const correctUsername = "malak";
+            const correctPassword = "1772024";
+            
+            if (username === correctUsername && password === correctPassword) {
+                // إخفاء صفحة الدخول وإظهار الرسالة
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('messageContainer').style.display = 'block';
+                document.getElementById('flowers').style.display = 'block';
+                document.body.style.background = 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)';
+                createFlowers();
+                
+                // إخفاء لوحة المفاتيح بعد الدخول
+                document.activeElement.blur();
+            } else {
+                // عرض رسالة الخطأ
+                errorMessage.style.display = 'block';
+                // هزة للمجموعة عند خطأ
+                document.querySelector('.login-container').style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    document.querySelector('.login-container').style.animation = '';
+                }, 500);
+            }
+        }
+        
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+            
+            // تغيير لون الخلفية
+            document.body.style.background = 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)';
+            
+            // إضافة المزيد من الأزهار
+            createFlowers();
+        }
+        
+        function createFlowers() {
+            const flowersContainer = document.getElementById('flowers');
+            const emojis = ['🌸', '🌹', '🌺', '🌻', '🌼', '💐', '🏵️'];
+            
+            // تنظيف الأزهار القديمة إذا وجدت
+            flowersContainer.innerHTML = '';
+            
+            // عدد أقل من الأزهار للجوال لتجنب مشاكل الأداء
+            const flowerCount = window.innerWidth < 768 ? 15 : 25;
+            
+            for (let i = 0; i < flowerCount; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // وضع عشوائي
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + '%';
+                
+                // تأخير مختلف لكل زهرة
+                flower.style.animationDelay = Math.random() * 5 + 's';
+                flower.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                
+                // حجم مختلف لكل زهرة
+                const size = Math.random() * 20 + 15;
+                flower.style.fontSize = size + 'px';
+                
+                flowersContainer.appendChild(flower);
+            }
+        }
+        
+        // السماح بالدخول عند الضغط على إنتر
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkLogin();
+            }
+        });
+        
+        // التركيز على حقل اسم المستخدم عند تحميل الصفحة
+        window.onload = function() {
+            document.getElementById('username').focus();
+        };
+    </script>
+</body>
+</html>

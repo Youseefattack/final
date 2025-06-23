@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد ملك 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #5a1a3e;
+            overflow-x: hidden;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* شاشة البداية */
+        .welcome-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .welcome-text {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #d23369;
+            animation: pulse 2s infinite;
+        }
+        
+        .couple-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .couple-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .start-btn {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+            text-decoration: none;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.6);
+        }
+        
+        /* تايملاين الحب */
+        .timeline-section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .timeline-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d23369;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #d23369;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #ff758c;
+            border: 4px solid #d23369;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #d23369;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-text {
+            margin-bottom: 10px;
+        }
+        
+        .timeline-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* رسالة الحب */
+        .love-letter-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);
+        }
+        
+        .love-letter-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .love-letter {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .love-letter::before, .love-letter::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ff758c;
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .love-letter::before {
+            top: 10px;
+            left: 20px;
+        }
+        
+        .love-letter::after {
+            bottom: 10px;
+            right: 20px;
+        }
+        
+        .letter-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        
+        .audio-message {
+            margin-top: 2rem;
+        }
+        
+        .audio-btn {
+            background: linear-gradient(to right, #a8e063, #56ab2f);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(86, 171, 47, 0.4);
+        }
+        
+        .audio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(86, 171, 47, 0.6);
+        }
+        
+        /* معرض الصور */
+        .gallery-section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .gallery-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .upload-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+            border: 2px dashed #d23369;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: #d23369;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            color: #d23369;
+            font-weight: bold;
+        }
+        
+        /* هدية افتراضية */
+        .gift-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .gift-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            margin-bottom: 2rem;
+        }
+        
+        .box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .box-front, .box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        
+        .box-front {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+        }
+        
+        .box-back {
+            background: white;
+            color: #d23369;
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+            flex-direction: column;
+        }
+        
+        .gift-box.open .box {
+            transform: rotateY(180deg);
+        }
+        
+        .gift-text {
+            margin-bottom: 1rem;
+        }
+        
+        .gift-link {
+            color: #d23369;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px dashed #d23369;
+        }
+        
+        /* الأنيميشنز */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* التأثيرات الخاصة */
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2rem;
+            }
+            
+            .couple-photo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container"></div>
+    
+    <!-- شاشة البداية -->
+    <section class="welcome-screen" id="welcome">
+        <h1 class="welcome-text">كل عام وأنتِ نور حياتي يا ملك 💖</h1>
+        <img src="https://via.placeholder.com/300x300" alt="ملك" class="couple-photo" id="mainPhoto">
+        <a href="#timeline" class="start-btn">ابدئي المفاجأة 🎁</a>
+    </section>
+    
+    <!-- تايملاين الحب -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="timeline-title">رحلة حبنا 🥰</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">يناير 2022</div>
+                    <div class="timeline-text">أول مرة تقابلنا فيها</div>
+                    <img src="https://via.placeholder.com/400x300" alt="أول لقاء" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">مارس 2022</div>
+                    <div class="timeline-text">أول موعد لنا في المطعم الإيطالي</div>
+                    <img src="https://via.placeholder.com/400x300" alt="أول موعد" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">أغسطس 2022</div>
+                    <div class="timeline-text">رحلة الشاطئ التي لن أنساها</div>
+                    <img src="https://via.placeholder.com/400x300" alt="رحلة الشاطئ" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">ديسمبر 2022</div>
+                    <div class="timeline-text">أول عيد ميلاد نحتفل به معًا</div>
+                    <img src="https://via.placeholder.com/400x300" alt="عيد ميلاد" class="timeline-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- رسالة الحب -->
+    <section class="love-letter-section" id="letter">
+        <h2 class="love-letter-title">رسالة من القلب 💌</h2>
+        <div class="love-letter">
+            <div class="letter-content">
+                <p>يا ملك،</p>
+                <p>في عيد ميلادك هذا، أريد أن أخبرك أنك أكثر شخص مميز في حياتي. كل يوم معك هو هدية من السماء، وكل لحظة أقضيها بجانبك تملؤني سعادة لا توصف.</p>
+                <p>أتذكر أول يوم تقابلنا فيه، وكيف غيرت حياتي منذ تلك اللحظة. أصبحت كل الأشياء الجميلة في الدنيا مرتبطة بك، وأصبحت كل أحلامي تدور حولك.</p>
+                <p>أحبك أكثر مما تستطيع الكلمات التعبير عنه، وأتمنى لك عيد ميلاد سعيدًا مليئًا بالحب والفرح، كما تملئين حياتي بهما.</p>
+                <p>كل عام وأنتِ أغلى ما أملك.</p>
+                <p>مع كل حبي،</p>
+                <p>يوسف</p>
+            </div>
+            <div class="audio-message">
+                <button class="audio-btn">
+                    <i class="fas fa-play"></i> استمعي لرسالتي الصوتية
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- معرض الصور -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="gallery-title">ذكرياتنا الجميلة 🖼️</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300" alt="صورة 1" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300" alt="صورة 2" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300" alt="صورة 3" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300" alt="صورة 4" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300" alt="صورة 5" class="gallery-img">
+            </div>
+            <div class="gallery-item upload-btn" id="uploadBtn">
+                <i class="fas fa-plus upload-icon"></i>
+                <span class="upload-text">أضف صورة جديدة</span>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+        </div>
+    </section>
+    
+    <!-- هدية افتراضية -->
+    <section class="gift-section" id="gift">
+        <h2 class="gift-title">هديتك الخاصة 🎁</h2>
+        <div class="gift-box" id="giftBox">
+            <div class="box">
+                <div class="box-front">
+                    <i class="fas fa-gift"></i> اضغطي لفتح الهدية
+                </div>
+                <div class="box-back">
+                    <p class="gift-text">هديتك هي رحلة رومانسية لمدينة الأحلام!</p>
+                    <a href="#" class="gift-link">اضغطي هنا للتفاصيل</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="confetti" id="confetti"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء القلوب العائمة
+            createHearts();
+            
+            // تغيير الصورة الرئيسية
+            const mainPhoto = document.getElementById('mainPhoto');
+            mainPhoto.addEventListener('click', function() {
+                const newPhoto = prompt('أدخل رابط الصورة الجديدة:');
+                if (newPhoto) {
+                    mainPhoto.src = newPhoto;
+                }
+            });
+            
+            // رفع الصور للمعرض
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
+            
+            uploadBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.className = 'gallery-img';
+                        img.alt = 'صورة جديدة';
+                        
+                        galleryItem.appendChild(img);
+                        uploadBtn.parentNode.insertBefore(galleryItem, uploadBtn);
+                        
+                        // إنشاء قلوب عند إضافة صورة
+                        createClickHearts({clientX: window.innerWidth/2, clientY: window.innerHeight/2});
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // فتح الهدية
+            const giftBox = document.getElementById('giftBox');
+            giftBox.addEventListener('click', function() {
+                this.classList.toggle('open');
+                
+                // تأثير الكونفيتي
+                createConfetti();
+                
+                // تشغيل رسالة صوتية بعد 3 ثواني
+                setTimeout(() => {
+                    alert('أحبك يا ملك! هذه الهدية هي مجرد بداية لما ينتظرنا في المستقبل ❤️');
+                }, 3000);
+            });
+            
+            // رسالة صوتية
+            const audioBtn = document.querySelector('.audio-btn');
+            audioBtn.addEventListener('click', function() {
+                alert('هنا يمكنك رفع رسالة صوتية أو فيديو لك');
+            });
+        });
+        
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts-container');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createHeart(heartsContainer);
+                }, i * 300);
+            }
+            
+            setInterval(() => {
+                createHeart(heartsContainer);
+            }, 300);
+        }
+        
+        function createHeart(container) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // حجم عشوائي
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = `${size}px`;
+            
+            // لون عشوائي
+            const colors = ['#ff0000', '#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffcccc'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.color = color;
+            
+            // وضع عشوائي
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            
+            // مدة عائمة عشوائية
+            heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+            
+            container.appendChild(heart);
+            
+            // إزالة القلب بعد انتهاء الأنيميشن
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        function createClickHearts(event) {
+            const heartsContainer = document.querySelector('.hearts-container');
+            const x = event.clientX;
+            const y = event.clientY;
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                    heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+                    heart.style.left = `${x}px`;
+                    heart.style.top = `${y}px`;
+                    heart.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+        
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            confettiContainer.innerHTML = '';
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.top = '-10px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                    
+                    confettiContainer.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 30);
+            }
+            
+           
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>

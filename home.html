@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد ملك 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #5a1a3e;
+            overflow-x: hidden;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        body.english {
+            font-family: 'Arial', sans-serif;
+            direction: ltr;
+        }
+        
+        body.korean {
+            font-family: 'Noto Sans KR', sans-serif;
+            direction: ltr;
+        }
+        
+        body.japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            direction: ltr;
+        }
+        
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* شاشة البداية */
+        .welcome-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .welcome-text {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #d23369;
+            animation: pulse 2s infinite;
+        }
+        
+        .couple-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .couple-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .start-btn {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+            text-decoration: none;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.6);
+        }
+        
+        /* كعكة عيد الميلاد */
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto 40px;
+            animation: bounce 2s infinite alternate;
+        }
+        
+        .plate {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 240px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 50%;
+        }
+        
+        .layer {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            border-radius: 10px;
+        }
+        
+        .layer-bottom {
+            height: 60px;
+            background: linear-gradient(to right, #f8b195, #f67280);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .layer-middle {
+            height: 40px;
+            width: 160px;
+            background: linear-gradient(to right, #c06c84, #6c5b7b);
+            bottom: 60px;
+        }
+        
+        .layer-top {
+            height: 30px;
+            width: 120px;
+            background: linear-gradient(to right, #355c7d, #6c5b7b);
+            bottom: 100px;
+        }
+        
+        .icing {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 10px;
+            background: #fff;
+            border-radius: 5px;
+        }
+        
+        .candle {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(to right, #ff5e62, #ff9966);
+            border-radius: 5px;
+        }
+        
+        .flame {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 20px;
+            background: #ffef00;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 10px #ff9900, 0 0 20px #ff6600;
+            animation: flicker 1s infinite alternate;
+        }
+        
+        /* تايملاين الحب */
+        .timeline-section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .timeline-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d23369;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #d23369;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #ff758c;
+            border: 4px solid #d23369;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #d23369;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-text {
+            margin-bottom: 10px;
+        }
+        
+        .timeline-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* رسالة الحب */
+        .love-letter-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);
+        }
+        
+        .love-letter-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .love-letter {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .love-letter::before, .love-letter::after {
+            content: '"';
+            font-size: 4rem;
+            color: #ff758c;
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .love-letter::before {
+            top: 10px;
+            left: 20px;
+        }
+        
+        .love-letter::after {
+            bottom: 10px;
+            right: 20px;
+        }
+        
+        .letter-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        
+        .audio-message {
+            margin-top: 2rem;
+        }
+        
+        .audio-btn {
+            background: linear-gradient(to right, #a8e063, #56ab2f);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(86, 171, 47, 0.4);
+        }
+        
+        .audio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(86, 171, 47, 0.6);
+        }
+        
+        /* معرض الصور */
+        .gallery-section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .gallery-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .upload-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+            border: 2px dashed #d23369;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: #d23369;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            color: #d23369;
+            font-weight: bold;
+        }
+        
+        /* Popup للصور */
+        .image-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .image-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .popup-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: popupFadeIn 0.5s ease-out;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 40px;
+            height: 40px;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-popup:hover {
+            transform: rotate(90deg);
+            background: #d23369;
+        }
+        
+        .popup-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* قسم الموسيقى */
+        .music-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .music-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .music-player {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .music-cover {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d23369;
+            box-shadow: 0 5px 15px rgba(210, 51, 105, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .music-cover.playing {
+            animation: rotate 10s linear infinite;
+        }
+        
+        .music-info {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .music-name {
+            font-size: 1.5rem;
+            color: #d23369;
+            margin-bottom: 0.5rem;
+        }
+        
+        .music-artist {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+        }
+        
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 117, 140, 0.6);
+        }
+        
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            cursor: pointer;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* بطاقات الأمنيات */
+        .wishes-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);
+        }
+        
+        .wishes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .wish-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .wish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .wish-card h3 {
+            color: #d23369;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .wish-btn {
+            background: linear-gradient(to right, #a8e063, #56ab2f);
+            margin-top: 1rem;
+        }
+        
+        .wish-btn:hover {
+            box-shadow: 0 6px 20px rgba(86, 171, 47, 0.6);
+        }
+        
+        /* قسم الأحلام المشتركة */
+        .dreams-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .dream-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dream-input {
+            padding: 1rem;
+            border: 2px solid #d23369;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .dream-input:focus {
+            outline: none;
+            border-color: #ff758c;
+            box-shadow: 0 0 10px rgba(210, 51, 105, 0.5);
+        }
+        
+        .dream-list {
+            margin-top: 2rem;
+            text-align: right;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .dream-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .dream-item::before {
+            content: '❤️';
+            margin-left: 0.5rem;
+        }
+        
+        .delete-dream {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dream-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .dream-tag {
+            background: #d23369;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* هدية افتراضية */
+        .gift-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .gift-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            margin-bottom: 2rem;
+        }
+        
+        .box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .box-front, .box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        
+        .box-front {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+        }
+        
+        .box-back {
+            background: white;
+            color: #d23369;
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+            flex-direction: column;
+        }
+        
+        .gift-box.open .box {
+            transform: rotateY(180deg);
+        }
+        
+        .gift-text {
+            margin-bottom: 1rem;
+        }
+        
+        .gift-link {
+            color: #d23369;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px dashed #d23369;
+        }
+        
+        /* التذييل */
+        .footer {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+        }
+        
+        .footer p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #d23369;
+        }
+        
+        .social-icons i {
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            color: #d23369;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons i:hover {
+            transform: scale(1.2);
+            color: #ff758c;
+        }
+        
+        /* الأنيميشنز */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes popupFadeIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateX(-50%) scale(0.9);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .popup-heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatHearts 4s ease-in-out forwards;
+        }
+        
+        /* التأثيرات الخاصة */
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            pointer-events: none;
+        }
+    
+        @keyframes bounceAround {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(200px, 100px); }
+            40% { transform: translate(-150px, 200px); }
+            60% { transform: translate(250px, -100px); }
+            80% { transform: translate(-200px, 150px); }
+            100% { transform: translate(100px, -200px); }
+        }
+        
+        /* قسم الفيديو */
+        .video-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        }
+        
+        .video-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d23369;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2rem;
+            }
+            
+            .couple-photo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .language-selector {
+                top: 10px;
+                left: 10px;
+                flex-direction: column;
+            }
+            
+            .wish-card {
+                min-width: 100%;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .close-popup {
+                top: -30px;
+                right: -30px;
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            
+            .music-player {
+                padding: 1.5rem;
+            }
+            
+            .music-cover {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cat-ball {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .custom-video {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: none; /* إخفاء الفيديو في البداية */
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* نسب 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+        .video-wrapper video {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-btn {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button class="lang-btn" data-lang="ar" title="العربية">ع</button>
+        <button class="lang-btn" data-lang="en" title="English">EN</button>
+        <button class="lang-btn" data-lang="ko" title="한국어">KO</button>
+        <button class="lang-btn" data-lang="ja" title="日本語">JP</button>
+    </div>
+        <script>
+// أغنية الخلفية
+const bgMusic = new Audio('happy.mp3');
+bgMusic.volume = 0.6; // تخفيف الصوت شوية
+
+// محاولة التشغيل التلقائي
+window.addEventListener('DOMContentLoaded', () => {
+    bgMusic.play().catch(e => {
+        // إذا المتصفح منع التشغيل التلقائي
+        const musicBtn = document.createElement('button');
+        musicBtn.innerHTML = '🎵 اضغط لتشغيل الموسيقى';
+        musicBtn.style.position = 'fixed';
+        musicBtn.style.bottom = '20px';
+        musicBtn.style.left = '20px';
+        musicBtn.style.zIndex = '1000';
+        musicBtn.style.padding = '10px 15px';
+        musicBtn.style.background = '#ff6b6b';
+        musicBtn.style.color = 'white';
+        musicBtn.style.border = 'none';
+        musicBtn.style.borderRadius = '20px';
+        musicBtn.style.fontFamily = 'Tajawal, sans-serif';
+        
+        musicBtn.onclick = () => {
+            bgMusic.play();
+            musicBtn.remove();
+        };
+        
+        document.body.appendChild(musicBtn);
+    });
+});
+
+// إيقاف الأغنية بعد دقيقة واحدة (60000 مللي ثانية)
+setTimeout(() => {
+    bgMusic.pause();
+}, 330000); // 33 ثانية
+</script>
+    <script>
+        const password = "1772024"; 
+        let input = prompt("أدخل كلمة السر لرؤية المفاجأة:");
+        while (input !== password) {
+            input = prompt("كلمة السر غير صحيحة، حاولي مرة أخرى:");
+        }
+        alert("كل سنه ونتي طيبه يا روحي أن شاء الله تعجبك الهديه❤❤💖");
+    </script>
+    
+
+
+    <!-- شاشة البداية -->
+    <section class="welcome-screen" id="welcome">
+        <h1 class="welcome-text" data-ar="كل عام وأنتِ نور حياتي يا ملك 💖" 
+                              data-en="Happy Birthday to the light of my life, Malak 💖"
+                              data-ko="내 삶의 빛 말라크, 생일 축하해 💖"
+                              data-ja="私の人生の光マラク、お誕生日おめでとう 💖">
+            كل عام وأنتِ نور حياتي يا ملك 💖
+        </h1>
+        <img src="m1.png.jpg" alt="ملك" class="couple-photo" id="mainPhoto">
+        <a href="#timeline" class="start-btn" data-ar="ابدئي المفاجأة 🎁" 
+                                           data-en="Start the Surprise 🎁"
+                                           data-ko="서프라이즈 시작하기 🎁"
+                                           data-ja="サプライズを始める 🎁">
+            ابدئي المفاجأة 🎁
+        </a>
+    </section>
+    
+    <!-- تايملاين الحب -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="timeline-title" data-ar="رحلة حبنا 🥰" 
+                                  data-en="Our Love Journey 🥰"
+                                  data-ko="우리의 사랑 여정 🥰"
+                                  data-ja="私たちの愛の旅 🥰">
+            رحلة حبنا 🥰
+        </h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-ar="اغسطس 2024" data-en="August 2024" data-ko="2024년 8월" data-ja="2024年8月">اغسطس 2024</div>
+                    <div class="timeline-text" data-ar="أول مرة قولتيلي بحبك😍" 
+                                             data-en="The first time you told me you love me"
+                                             data-ko="처음으로 네가 나를 사랑한다고 말했을 때"
+                                             data-ja="初めて愛していると言ってくれた時">
+                        أول مرة قولتيلي بحبك
+                    </div>
+                    <img src="m2.png" alt="أول مره" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-ar="اغسطس 2024" data-en="August 2024" data-ko="2024년 8월" data-ja="2024年8月">اغسطس 2024</div>
+                    <div class="timeline-text" data-ar="أول كول انا وبطتتي❤" 
+                                             data-en="My duck and I are the first to call ❤"
+                                             data-ko="나와 내 오리가 제일 먼저 ❤를 외칩니다"
+                                             data-ja="私と私のアヒルが最初に電話します❤">
+                        أول كول انا وبطتتي❤
+                    </div>
+                    <img src="m3.png.jpg" alt="أول كول" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-ar="أغسطس 2024" data-en="August 2024" data-ko="2024년 8월" data-ja="2024年8月">أغسطس 2024</div>
+                    <div class="timeline-text" data-ar="زكرى حلوه اوي بيني وبينك" 
+                                             data-en="A very sweet memory between you and me"
+                                             data-ko="너와 나 사이의 아주 달콤한 추억"
+                                             data-ja="あなたと私の間のとても甘い思い出">
+                        زكرى حلوه اوي بيني وبينك
+                    </div>
+                    <img src="m4.png" alt="زكرى حلوه" class="timeline-image">
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-ar="اكتوبر 2024" data-en="October 2024" data-ko="2024년 10월" data-ja="2024年10月">اكتوبر 2024</div>
+                    <div class="timeline-text" data-ar="اول خناقه انا وبطتتي 😂❤" 
+                                             data-en="My duck and I had our first fight 😂❤"
+                                             data-ko="딸아이와 저는 처음으로 싸웠어요 😂❤"
+                                             data-ja="娘と初めて喧嘩しました😂❤">
+                        اول خناقه انا وبطتتي 😂❤
+                    </div>
+                    <img src="m5.png.jpg" alt="اول خناقه" class="timeline-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- رسالة الحب -->
+    <section class="love-letter-section" id="letter">
+        <h2 class="love-letter-title" data-ar="رسالة من القلب 💌" 
+                                     data-en="From the Heart 💌"
+                                     data-ko="마음에서 💌"
+                                     data-ja="心から 💌">
+            رسالة من القلب 💌
+        </h2>
+        <div class="love-letter">
+            <div class="letter-content">
+                <p id="message" data-ar="يا ملك، في عيد ميلادك هذا، أريد أن أخبرك أنك أكثر شخص مميز في حياتي. كل يوم معك هو هدية من السماء، وكل لحظة أقضيها بجانبك تملؤني سعادة لا توصف."
+                               data-en="Malak, on your birthday, I want to tell you that you are the most special person in my life. Every day with you is a gift from heaven, and every moment I spend by your side fills me with indescribable happiness."
+                               data-ko="말라크, 너의 생일에 나는 너에게 말하고 싶어. 너는 내 인생에서 가장 특별한 사람이라는 걸. 너와 함께하는 매일은 하늘의 선물이고, 네 옆에서 보내는 모든 순간은 나에게 말로 표현할 수 없는 행복을 채워줘."
+                               data-ja="マラク、あなたの誕生日に、あなたが私の人生で最も特別な人だということを伝えたいです。あなたと過ごす毎日は天からの贈り物で、あなたのそばで過ごすすべての瞬間は私に言葉では表せない幸せを与えてくれます。">
+                    يا ملك، في عيد ميلادك هذا، أريد أن أخبرك أنك أكثر شخص مميز في حياتي. كل يوم معك هو هدية من السماء، وكل لحظة أقضيها بجانبك تملؤني سعادة لا توصف.
+                </p>
+            </div>
+            <div class="audio-message">
+                <button class="audio-btn" id="new-message-btn" data-ar="اضغط هنا لرسالة جديدة 💖" 
+                                                             data-en="Click for a new message 💖"
+                                                             data-ko="새 메시지를 원하면 클릭하세요 💖"
+                                                             data-ja="新しいメッセージを表示 💖">
+                    اضغط هنا لرسالة جديدة 💖
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- معرض الصور -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="gallery-title" data-ar="ذكرياتنا الجميلة 🖼️" 
+                                 data-en="Our Beautiful Memories 🖼️"
+                                 data-ko="우리의 아름다운 추억 🖼️"
+                                 data-ja="私たちの美しい思い出 🖼️">
+            ذكرياتنا الجميلة 🖼️
+        </h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="m6.jpg" alt="صورة 1" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="m11.jpg" alt="صورة 2" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="m13.jpg" alt="صورة 3" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="m12.jpg" alt="صورة 4" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="m15.png" alt="صورة 5" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="m20.jpg" alt="صورة 6" class="gallery-img">
+            </div>
+            <div class="gallery-item upload-btn" id="uploadBtn">
+                <i class="fas fa-plus upload-icon"></i>
+                <span class="upload-text" data-ar="أضف صورة جديدة" 
+                                        data-en="Add new photo"
+                                        data-ko="새 사진 추가"
+                                        data-ja="新しい写真を追加">
+                    أضف صورة جديدة
+                </span>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+        </div>
+<!-- قسم الفيديو -->
+<section class="video-section" id="video">
+    <h2 class="video-title" data-ar="🎬 فيديو ليكيييي 🎬" 
+                       data-en="🎬 Birthday Video 🎬"
+                       data-ko="🎬 생일 축하 영상 🎬"
+                       data-ja="🎬 お誕生日ビデオ 🎬">
+        🎬 فيديو ليكيييي 🎬
+    </h2>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <!-- استبدال iframe بعنصر video مع إزالة السمة autoplay -->
+            <video controls class="custom-video" poster="video-poster.jpg">
+                <source src="vidio.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+        <button class="start-btn video-play-btn" style="margin-top: 20px;">
+            <i class="fas fa-play"></i>
+            <span data-ar="تشغيل الفيديو" data-en="Play Video" data-ko="영상 재생" data-ja="ビデオを再生">تشغيل الفيديو</span>
+        </button>
+    </div>
+</section>
+    
+    <!-- مشغل الموسيقى -->
+    <section class="music-section" id="music">
+        <h2 class="music-title" data-ar="أغانينا الخاصة 🎵" 
+                               data-en="Our Special Song 🎵"
+                               data-ko="우리의 특별한 노래 🎵"
+                               data-ja="私たちの特別な歌 🎵">
+            أغانينا الخاصة 🎵
+        </h2>
+        <div class="music-player">
+            <img src="m10.png" alt="غلاف الأغنية" class="music-cover">
+            <div class="music-info">
+                <h3 class="music-name" data-ar="أغنية لحبيبتي" 
+                                     data-en="Song for My Love"
+                                     data-ko="내 사랑을 위한 노래"
+                                     data-ja="私の愛のための歌">
+                    أغنية لحبيبتي
+                </h3>
+                <p class="music-artist" data-ar="ملك قلبي" 
+                                      data-en="Malak My Heart"
+                                      data-ko="내 마음의 말라크"
+                                      data-ja="私の心のマラク">
+                    ملك قلبي
+                </p>
+            </div>
+            <div class="progress-container">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="time-info">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+            <div class="music-controls">
+                <button class="music-btn" id="prev-btn">
+                    <i class="fas fa-backward"></i>
+                </button>
+                <button class="music-btn play-btn" id="play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="music-btn" id="next-btn">
+                    <i class="fas fa-forward"></i>
+                </button>
+            </div>
+            <audio id="audio" src="Cairokee.mp3"></audio>
+        </div>
+    </section>
+    
+    <!-- Popup للصور -->
+    <div class="image-popup" id="imagePopup">
+        <div class="popup-content">
+            <button class="close-popup">&times;</button>
+            <img src="" alt="صورة منبثقة" class="popup-img" id="popupImage">
+            <div class="popup-hearts" id="popupHearts"></div>
+        </div>
+    </div>
+    
+    <section class="wishes-section">
+        <h2 data-ar="🎁 أمنياتي لك في عيد ميلادك 🎁" 
+            data-en="🎁 My Wishes for Your Birthday 🎁"
+            data-ko="🎁 너의 생일을 위한 나의 소원 🎁"
+            data-ja="🎁 あなたの誕生日への私の願い 🎁">
+            🎁 أمنياتي لك في عيد ميلادك 🎁
+        </h2>
+        <div class="wishes-container">
+            <div class="wish-card" id="wish1">
+                <h3 data-ar="السعادة" data-en="Happiness" data-ko="행복" data-ja="幸せ">السعادة</h3>
+                <p data-ar="أتمنى لك سنة مليانة فرح وسعادة" 
+                   data-en="I wish you a year full of joy and happiness"
+                   data-ko="기쁨과 행복이 가득한 한 해를 바래요"
+                   data-ja="喜びと幸せに満ちた一年になりますように">
+                    أتمنى لك سنة مليانة فرح وسعادة
+                </p>
+                <button class="wish-btn" data-ar="اضغط هنا 💝" 
+                                       data-en="Click here 💝"
+                                       data-ko="여기를 클릭하세요 💝"
+                                       data-ja="ここをクリック 💝">
+                    اضغط هنا 💝
+                </button>
+            </div>
+            <div class="wish-card" id="wish2">
+                <h3 data-ar="الصحة" data-en="Health" data-ko="건강" data-ja="健康">الصحة</h3>
+                <p data-ar="دوم تكوني بصحة وعافية يا قمري" 
+                   data-en="Always stay healthy and well, my love"
+                   data-ko="항상 건강하고 행복하길 바래, 내 사랑"
+                   data-ja="いつも健康で幸せでありますように、愛する人">
+                    دوم تكوني بصحة وعافية يا قمر
+                </p>
+                <button class="wish-btn" data-ar="اضغط هنا 💝" 
+                                       data-en="Click here 💝"
+                                       data-ko="여기를 클릭하세요 💝"
+                                       data-ja="ここをクリック 💝">
+                    اضغط هنا 💝
+                </button>
+            </div>
+            <div class="wish-card" id="wish3">
+                <h3 data-ar="الحب" data-en="Love" data-ko="사랑" data-ja="愛">الحب</h3>
+                <p data-ar="أحبك أكثر من كل شيء في الدنيا" 
+                   data-en="I love you more than anything in the world"
+                   data-ko="나는 세상 무엇보다 너를 사랑해"
+                   data-ja="私はこの世の何よりもあなたを愛しています">
+                    أحبك أكثر من كل شيء في الدنيا
+                </p>
+                <button class="wish-btn" data-ar="اضغط هنا 💝" 
+                                       data-en="Click here 💝"
+                                       data-ko="여기를 클릭하세요 💝"
+                                       data-ja="ここをクリック 💝">
+                    اضغط هنا 💝
+                </button>
+            </div>
+        </div>
+    </section>
+    
+        <section class="dreams-section">
+        <h2 data-ar="✨ أحلامنا وخططنا المشتركة ✨" 
+            data-en="✨ Our Shared Dreams and Plans ✨"
+            data-ko="✨ 우리의 공유된 꿈과 계획 ✨"
+            data-ja="✨ 私たちの共有の夢と計画 ✨">
+            ✨ أحلامنا وخططنا المشتركة ✨
+        </h2>
+        <div class="dream-form">
+            <textarea class="dream-input" placeholder="اكتب حلمك أو خططك هنا..." 
+                      data-ar-placeholder="اكتب حلمك أو خططك هنا..."
+                      data-en-placeholder="Write your dream or plans here..."
+                      data-ko-placeholder="당신의 꿈이나 계획을 여기에 쓰세요..."
+                      data-ja-placeholder="あなたの夢や計画をここに書いてください..."></textarea>
+            <div class="dream-tags">
+                <span class="dream-tag" data-ar="اليابان" data-en="Japan" data-ko="일본" data-ja="日本">اليابان</span>
+                <span class="dream-tag" data-ar="كوريا" data-en="Korea" data-ko="한국" data-ja="韓国">كوريا</span>
+                <span class="dream-tag" data-ar="سفر" data-en="Travel" data-ko="여행" data-ja="旅行">سفر</span>
+                <span class="dream-tag" data-ar="مغامرات" data-en="Adventures" data-ko="모험" data-ja="冒険">مغامرات</span>
+            </div>
+            <button id="add-dream-btn" class="btn" data-ar="أضف إلى أحلامنا 💭" 
+                                           data-en="Add to our dreams 💭"
+                                           data-ko="우리의 꿈에 추가하세요 💭"
+                                           data-ja="私たちの夢に追加 💭">
+                أضف إلى أحلامنا 💭
+            </button>
+        </div>
+        <div class="dream-list" id="dream-list">
+        </div>
+        <div class="dream-images" id="dream-images" style="max-width: 800px; margin: 20px auto; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+            <img src="m16.jpg" alt="Japan" style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; cursor: pointer;" class="dream-image" data-src="m16.jpg">
+            <img src="m17.jpg" alt="Korea" style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; cursor: pointer;" class="dream-image" data-src="m17.jpg">
+            <img src="m18.jpg" alt="Travel" style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; cursor: pointer;" class="dream-image" data-src="m18.jpg">
+            <img src="m19.jpg" alt="Adventures" style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; cursor: pointer;" class="dream-image" data-src="m19.jpg">
+        </div>
+    </section>
+    
+    <section class="gift-section" id="gift">
+        <h2 class="gift-title" data-ar="هديتك الخاصة 🎁" 
+                              data-en="Your Special Gift 🎁"
+                              data-ko="너를 위한 특별한 선물 🎁"
+                              data-ja="あなたへの特別な贈り物 🎁">
+            هديتك الخاصة 🎁
+        </h2>
+        <div class="gift-box" id="giftBox">
+            <div class="box">
+                <div class="box-front">
+                    <i class="fas fa-gift"></i> 
+                    <span data-ar="اضغطي لفتح الهدية" 
+                          data-en="Click to open the gift"
+                          data-ko="선물을 열려면 클릭하세요"
+                          data-ja="贈り物を開くにはクリック">
+                        اضغطي لفتح الهدية
+                    </span>
+                </div>
+                <div class="box-back">
+                    <p class="gift-text" data-ar="هديتك هي رحلة رومانسية لمدينة الأحلام!" 
+                                        data-en="Your gift is a romantic trip to the city of dreams!"
+                                        data-ko="너의 선물은 꿈의 도시로의 로맨틱한 여행이야!"
+                                        data-ja="あなたへの贈り物は夢の街へのロマンチックな旅です！">
+                        هديتك هي رحلة رومانسية لمدينة الأحلام!
+                    </p>
+                    <a href="#" class="gift-link" data-ar="اضغطي هنا للتفاصيل" 
+                                                data-en="Click here for details"
+                                                data-ko="자세한 내용은 여기를 클릭하세요"
+                                                data-ja="詳細はこちらをクリック">
+                        اضغطي هنا للتفاصيل
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p data-ar="صنع بكل الحب من أجل ملك 💖" 
+           data-en="Made with all love for Malak 💖"
+           data-ko="말라크를 위한 모든 사랑으로 만든 💖"
+           data-ja="マラクのためにすべての愛を込めて作られました 💖">
+            صنع بكل الحب من أجل ملك 💖
+        </p>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </footer>
+    
+    <div class="confetti" id="confetti"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء القلوب العائمة
+            createHearts();
+            
+           
+            
+            // تغيير اللغة
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    document.body.className = lang;
+                    updateTexts(lang);
+                });
+            });
+            
+            // تغيير الصورة الرئيسية
+            const mainPhoto = document.getElementById('mainPhoto');
+            mainPhoto.addEventListener('click', function() {
+                const currentLang = document.body.className || 'ar';
+                const message = {
+                    ar: 'يمكنك هنا إضافة صورة لحبيبتك ملك! قم باستبدال العنصر بصورة حقيقية.',
+                    en: 'You can add a photo of your beloved Malak here! Replace the element with a real photo.',
+                    ko: '여기에 당신의 사랑 말라크의 사진을 추가할 수 있습니다! 실제 사진으로 요소를 교체하세요.',
+                    ja: 'ここにあなたの愛するマラクの写真を追加できます！実際の写真で要素を置き換えてください。'
+                };
+                alert(message[currentLang]);
+            });
+            
+            // Popup للصور
+            const imagePopup = document.getElementById('imagePopup');
+            const popupImage = document.getElementById('popupImage');
+            const popupHearts = document.getElementById('popupHearts');
+            const closePopup = document.querySelector('.close-popup');
+            
+            // إضافة حدث النقر لجميع الصور في المعرض
+            document.querySelectorAll('.gallery-img, .timeline-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    popupImage.src = this.src;
+                    imagePopup.classList.add('active');
+                    
+                    // إنشاء قلوب في البوب أب
+                    createPopupHearts();
+                    
+                    // منع التمرير عند فتح البوب أب
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // إغلاق البوب أب
+            closePopup.addEventListener('click', function() {
+                imagePopup.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // إغلاق البوب أب عند النقر خارج الصورة
+            imagePopup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // إنشاء قلوب في البوب أب
+            function createPopupHearts() {
+                popupHearts.innerHTML = '';
+                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.classList.add('popup-heart');
+                        heart.innerHTML = '❤️';
+                        
+                        const size = Math.random() * 30 + 20;
+                        heart.style.fontSize = `${size}px`;
+                        
+                        const colors = ['#ff0000', '#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffcccc'];
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        heart.style.color = color;
+                        
+                        heart.style.left = `${Math.random() * 100}%`;
+                        heart.style.top = `${Math.random() * 100}%`;
+                        
+                        heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                        
+                        popupHearts.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 4000);
+                    }, i * 150);
+                }
+            }
+            
+            // مشغل الموسيقى
+            const audio = document.getElementById('audio');
+            const playBtn = document.getElementById('play-btn');
+            const progress = document.getElementById('progress');
+            const progressContainer = document.querySelector('.progress-container');
+            const currentTimeEl = document.getElementById('current-time');
+            const durationEl = document.getElementById('duration');
+            const musicCover = document.querySelector('.music-cover');
+            
+            // تحميل الأغنية
+            let isPlaying = false;
+            
+            function playSong() {
+                isPlaying = true;
+                playBtn.querySelector('i').classList.remove('fa-play');
+                playBtn.querySelector('i').classList.add('fa-pause');
+                musicCover.classList.add('playing');
+                audio.play();
+                
+                // إنشاء قلوب عند التشغيل
+                createMusicHearts();
+            }
+            
+            function pauseSong() {
+                isPlaying = false;
+                playBtn.querySelector('i').classList.remove('fa-pause');
+                playBtn.querySelector('i').classList.add('fa-play');
+                musicCover.classList.remove('playing');
+                audio.pause();
+            }
+            
+            // التبديل بين التشغيل والإيقاف
+            playBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    pauseSong();
+                } else {
+                    playSong();
+                }
+            });
+            
+            // تحديث شريط التقدم
+            function updateProgress(e) {
+                const { duration, currentTime } = e.srcElement;
+                const progressPercent = (currentTime / duration) * 100;
+                progress.style.width = `${progressPercent}%`;
+                
+                // تحديث الوقت
+                const durationMinutes = Math.floor(duration / 60);
+                let durationSeconds = Math.floor(duration % 60);
+                if (durationSeconds < 10) {
+                    durationSeconds = `0${durationSeconds}`;
+                }
+                
+                if (durationSeconds) {
+                    durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+                }
+                
+                const currentMinutes = Math.floor(currentTime / 60);
+                let currentSeconds = Math.floor(currentTime % 60);
+                if (currentSeconds < 10) {
+                    currentSeconds = `0${currentSeconds}`;
+                }
+                currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+            }
+            
+            // ضبط وقت الأغنية عند النقر على شريط التقدم
+            function setProgress(e) {
+                const width = this.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audio.duration;
+                audio.currentTime = (clickX / width) * duration;
+            }
+            
+            // إنشاء قلوب عند تشغيل الموسيقى
+            function createMusicHearts() {
+                const musicPlayer = document.querySelector('.music-player');
+                const heartsContainer = document.createElement('div');
+                heartsContainer.style.position = 'absolute';
+                heartsContainer.style.top = '0';
+                heartsContainer.style.left = '0';
+                heartsContainer.style.width = '100%';
+                heartsContainer.style.height = '100%';
+                heartsContainer.style.pointerEvents = 'none';
+                heartsContainer.style.zIndex = '-1';
+                heartsContainer.style.overflow = 'hidden';
+                heartsContainer.style.borderRadius = '15px';
+                
+                musicPlayer.appendChild(heartsContainer);
+                
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.style.position = 'absolute';
+                        heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                        heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+                        heart.style.left = `${Math.random() * 100}%`;
+                        heart.style.bottom = '-20px';
+                        heart.style.animation = `float ${Math.random() * 3 + 3}s linear forwards`;
+                        heart.innerHTML = '❤️';
+                        
+                        heartsContainer.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 3000);
+                    }, i * 200);
+                }
+                
+                // إزالة العنصر بعد انتهاء التأثير
+                setTimeout(() => {
+                    heartsContainer.remove();
+                }, 30000);
+            }
+            
+            // أحداث مشغل الموسيقى
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('ended', () => {
+                playBtn.querySelector('i').classList.remove('fa-pause');
+                playBtn.querySelector('i').classList.add('fa-play');
+                musicCover.classList.remove('playing');
+            });
+            progressContainer.addEventListener('click', setProgress);
+            
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
+            
+            uploadBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.className = 'gallery-img';
+                        img.alt = 'صورة جديدة';
+                        
+                        galleryItem.appendChild(img);
+                        uploadBtn.parentNode.insertBefore(galleryItem, uploadBtn);
+                        
+                        // إضافة حدث النقر للصورة الجديدة
+                        img.addEventListener('click', function() {
+                            popupImage.src = this.src;
+                            imagePopup.classList.add('active');
+                            createPopupHearts();
+                            document.body.style.overflow = 'hidden';
+                        });
+                        
+                        // إنشاء قلوب عند إضافة صورة
+                        createClickHearts({clientX: window.innerWidth/2, clientY: window.innerHeight/2});
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // فتح الهدية
+            const giftBox = document.getElementById('giftBox');
+            giftBox.addEventListener('click', function() {
+                this.classList.toggle('open');
+                
+                // تأثير الكونفيتي
+                createConfetti();
+                
+                // تشغيل رسالة صوتية بعد 3 ثواني
+                setTimeout(() => {
+                    const currentLang = document.body.className || 'ar';
+                    const message = {
+                        ar: 'أحبك يا ملك! هذه الهدية هي مجرد بداية لما ينتظرنا في المستقبل ❤️',
+                        en: 'I love you Malak! This gift is just the beginning of what awaits us in the future ❤️',
+                        ko: '사랑해 말라크! 이 선물은 우리 앞에 놓인 미래의 시작에 불과해 ❤️',
+                        ja: '愛してるマラク！この贈り物は私たちの未来の始まりに過ぎない ❤️'
+                    };
+                    alert(message[currentLang]);
+                }, 3000);
+            });
+            
+            // رسائل الحب العشوائية
+            const messageBtn = document.getElementById('new-message-btn');
+            const messageElement = document.getElementById('message');
+            
+            const loveMessages = {
+                ar: [
+                    "ملك، أنتِ أجمل شيء حدث في حياتي، كل عام وأنتِ بخير يا حبيبتي!",
+                    "في عيد ميلادك، أتمنى لك كل السعادة التي تستحقينها يا أغلى الناس!",
+                    "كل سنة وأنتِ طيبة يا ملك، وحياتك كلها فرح وسعادة!",
+                    "ملك قلبي، في عيد ميلادك أقول لك: أحبك أكثر من أي شيء في الدنيا!",
+                    "عيد ميلاد سعيد لأجمل إنسانة في الكون!",
+                    "يا ملك، وجودك في حياتي هو أعظم هدية من الله!",
+                    "كل عام وأنتِ نور حياتي وسعادتي يا حبيبتي ملك!",
+                    "أتمنى لك عيد ميلاد سعيد مثلما تسعديني كل يوم!"
+                ],
+                en: [
+                    "Malak, you are the most beautiful thing that happened in my life, happy birthday my love!",
+                    "On your birthday, I wish you all the happiness you deserve, my precious!",
+                    "Happy birthday Malak, may your life be full of joy and happiness!",
+                    "Malak my love, on your birthday I say: I love you more than anything in the world!",
+                    "Happy birthday to the most beautiful woman in the universe!",
+                    "Malak, your presence in my life is the greatest gift from God!",
+                    "Happy birthday my love Malak, you are the light of my life!",
+                    "I wish you a happy birthday as happy as you make me every day!"
+                ],
+                ko: [
+                    "말라크, 너는 내 인생에 일어난 가장 아름다운 일이야, 생일 축하해 내 사랑!",
+                    "너의 생일에, 나는 네가 받을 자격이 있는 모든 행복을 바래, 내 소중한 사람!",
+                    "생일 축하해 말라크, 네 인생이 기쁨과 행복으로 가득하길!",
+                    "내 사랑 말라크, 너의 생일에 나는 말해: 나는 세상 무엇보다 너를 사랑해!",
+                    "우주에서 가장 아름다운 여자에게 생일 축하해!",
+                    "말라크, 내 인생에 네가 있다는 건 신이 준 가장 큰 선물이야!",
+                    "내 사랑 말라크 생일 축하해, 너는 내 인생의 빛이야!",
+                    "네가 매일 나를 행복하게 해주는 것처럼, 나도 너에게 행복한 생일을 바래!"
+                ],
+                ja: [
+                    "マラク、あなたは私の人生で起こった最も美しいことです、愛する人誕生日おめでとう！",
+                    "あなたの誕生日に、あなたが値するすべての幸せを願います、私の大切な人！",
+                    "マラクお誕生日おめでとう、あなたの人生が喜びと幸せで満たされますように！",
+                    "私の愛するマラク、あなたの誕生日に私は言います：私はこの世の何よりもあなたを愛しています！",
+                    "宇宙で最も美しい女性へ、誕生日おめでとう！",
+                    "マラク、私の人生にあなたがいることは神からの最大の贈り物です！",
+                    "愛するマラクお誕生日おめでとう、あなたは私の人生の光です！",
+                    "あなたが毎日私を幸せにしてくれるように、私もあなたに幸せな誕生日を願います！"
+                ]
+            };
+            
+            messageBtn.addEventListener('click', function() {
+                const currentLang = document.body.className || 'ar';
+                const messages = loveMessages[currentLang];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                messageElement.textContent = randomMessage;
+                
+                // إضافة تأثير للرسالة الجديدة
+                messageElement.style.animation = 'none';
+                void messageElement.offsetWidth; // إعادة التدفق
+                messageElement.style.animation = 'pulse 1s';
+                
+                // إنشاء قلوب عند الضغط
+                createClickHearts(event);
+            });
+            
+            // أزرار الأمنيات
+            const wishButtons = document.querySelectorAll('.wish-btn');
+            
+            wishButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    const wishCard = this.parentElement;
+                    wishCard.style.background = 'linear-gradient(135deg, #fff6f6 0%, #ffecec 100%)';
+                    wishCard.style.transform = 'scale(1.05)';
+                    
+                    // إنشاء قلوب عند الضغط
+                    createClickHearts(event);
+                    
+                    // إرجاع التأثير بعد ثانية
+                    setTimeout(() => {
+                        wishCard.style.transform = '';
+                    }, 1000);
+                });
+            });
+            
+            // إدارة قسم الأحلام
+            const dreamInput = document.querySelector('.dream-input');
+            const addDreamBtn = document.getElementById('add-dream-btn');
+            const dreamList = document.getElementById('dream-list');
+            
+            addDreamBtn.addEventListener('click', function() {
+                const dreamText = dreamInput.value.trim();
+                if (dreamText) {
+                    addDream(dreamText);
+                    dreamInput.value = '';
+                    
+                    // إنشاء قلوب عند إضافة حلم
+                    createClickHearts({clientX: window.innerWidth/2, clientY: window.innerHeight/2});
+                }
+            });
+            
+            // إضافة حلم عند الضغط على Enter
+            dreamInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    addDreamBtn.click();
+                }
+            });
+            
+            function addDream(text) {
+                const dreamItem = document.createElement('div');
+                dreamItem.className = 'dream-item';
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-dream';
+                deleteBtn.innerHTML = '&times;';
+                deleteBtn.addEventListener('click', function() {
+                    dreamItem.style.animation = 'fadeOut 0.5s ease-out';
+                    setTimeout(() => {
+                        dreamItem.remove();
+                    }, 500);
+                });
+                
+                const dreamContent = document.createElement('p');
+                dreamContent.textContent = text;
+                
+                dreamItem.appendChild(deleteBtn);
+                dreamItem.appendChild(dreamContent);
+                dreamList.appendChild(dreamItem);
+                
+                // Scroll to the new dream
+                dreamItem.scrollIntoView({behavior: 'smooth'});
+            }
+            
+            // إضافة بعض الأحلام المبدئية
+            const initialDreams = {
+                ar: [
+                    "السفر إلى اليابان معًا واستكشاف طوكيو وكيوتو",
+                    "زيارة كوريا وتجربة الثقافة الكورية والأكلات اللذيذة",
+                    "قضاء أسبوع في جزيرة جميلة مع شروق وغروب الشمس الرائعة"
+                ],
+                en: [
+                    "Travel to Japan together and explore Tokyo and Kyoto",
+                    "Visit Korea and experience Korean culture and delicious food",
+                    "Spend a week on a beautiful island with amazing sunrises and sunsets"
+                ],
+                ko: [
+                    "일본으로 함께 여행하고 도쿄와 교토를 탐험하기",
+                    "한국을 방문하고 한국 문화와 맛있는 음식을 경험하기",
+                    "아름다운 섬에서 멋진 일출과 일몰을 보며 일주일 보내기"
+                ],
+                ja: [
+                    "一緒に日本へ旅行して東京と京都を探索する",
+                    "韓国を訪れて韓国文化と美味しい料理を体験する",
+                    "美しい島で素晴らしい日の出と日没を見ながら一週間過ごす"
+                ]
+            };
+            
+            // إضافة الأحلام المبدئية عند التحميل
+            const currentLang = document.body.className || 'ar';
+            initialDreams[currentLang].forEach(dream => {
+                addDream(dream);
+            });
+        });
+        
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts-container');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createHeart(heartsContainer);
+                }, i * 300);
+            }
+            
+            setInterval(() => {
+                createHeart(heartsContainer);
+            }, 300);
+        }
+        
+        function createHeart(container) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = `${size}px`;
+            
+            const colors = ['#ff0000', '#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffcccc'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.color = color;
+            
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            
+            heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        function createClickHearts(event) {
+            const heartsContainer = document.querySelector('.hearts-container');
+            const x = event.clientX;
+            const y = event.clientY;
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                    heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+                    heart.style.left = `${x}px`;
+                    heart.style.top = `${y}px`;
+                    heart.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+        
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            confettiContainer.innerHTML = '';
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.top = '-10px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                    
+                    confettiContainer.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 30);
+            }
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        function updateTexts(lang) {
+            document.querySelectorAll('[data-ar], [data-en], [data-ko], [data-ja]').forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    } else {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                }
+            });
+            
+            const initialDreams = {
+                ar: [
+                    "السفر إلى اليابان معًا واستكشاف طوكيو وكيوتو",
+                    "زيارة كوريا وتجربة الثقافة الكورية والأكلات اللذيذة",
+                    "قضاء أسبوع في جزيرة جميلة مع شروق وغروب الشمس الرائعة"
+                ],
+                en: [
+                    "Travel to Japan together and explore Tokyo and Kyoto",
+                    "Visit Korea and experience Korean culture and delicious food",
+                    "Spend a week on a beautiful island with amazing sunrises and sunsets"
+                ],
+                ko: [
+                    "일본으로 함께 여행하고 도쿄와 교토를 탐험하기",
+                    "한국을 방문하고 한국 문화와 맛있는 음식을 경험하기",
+                    "아름다운 섬에서 멋진 일출과 일몰을 보며 일주일 보내기"
+                ],
+                ja: [
+                    "一緒に日本へ旅行して東京と京都を探索する",
+                    "韓国を訪れて韓国文化と美味しい料理を体験する",
+                    "美しい島で素晴らしい日の出と日没を見ながら一週間過ごす"
+                ]
+            };
+            
+            const dreamList = document.getElementById('dream-list');
+            dreamList.innerHTML = '';
+            initialDreams[lang].forEach(dream => {
+                const dreamItem = document.createElement('div');
+                dreamItem.className = 'dream-item';
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-dream';
+                deleteBtn.innerHTML = '&times;';
+                deleteBtn.addEventListener('click', function() {
+                    dreamItem.style.animation = 'fadeOut 0.5s ease-out';
+                    setTimeout(() => {
+                        dreamItem.remove();
+                    }, 500);
+                });
+                
+                const dreamContent = document.createElement('p');
+                dreamContent.textContent = dream;
+                
+                dreamItem.appendChild(deleteBtn);
+                dreamItem.appendChild(dreamContent);
+                dreamList.appendChild(dreamItem);
+            });
+        }
+        // التحكم في تشغيل الفيديو
+const videoPlayBtn = document.querySelector('.video-play-btn');
+const videoElement = document.querySelector('.custom-video');
+
+videoPlayBtn.addEventListener('click', function() {
+    // إظهار الفيديو عند النقر
+    videoElement.style.display = 'block';
+    
+    // تغيير زر التشغيل إلى زر إيقاف مؤقت
+    this.innerHTML = '<i class="fas fa-pause"></i><span data-ar="إيقاف مؤقت" data-en="Pause" data-ko="일시 정지" data-ja="一時停止">إيقاف مؤقت</span>';
+    
+    // تشغيل الفيديو
+    videoElement.play();
+    
+    // تغيير الحدث عند النقر ليكون لإيقاف الفيديو
+    this.onclick = function() {
+        videoElement.pause();
+        this.innerHTML = '<i class="fas fa-play"></i><span data-ar="تشغيل الفيديو" data-en="Play Video" data-ko="영상 재생" data-ja="ビデオを再生">تشغيل الفيديو</span>';
+        this.onclick = function() {
+            videoElement.play();
+            this.innerHTML = '<i class="fas fa-pause"></i><span data-ar="إيقاف مؤقت" data-en="Pause" data-ko="일시 정지" data-ja="一時停止">إيقاف مؤقت</span>';
+            this.onclick = arguments.callee;
+        };
+    };
+});
+
+// إعادة تعيين الفيديو عند انتهائه
+videoElement.addEventListener('ended', function() {
+    videoPlayBtn.innerHTML = '<i class="fas fa-play"></i><span data-ar="تشغيل الفيديو" data-en="Play Video" data-ko="영상 재생" data-ja="ビデオを再生">تشغيل الفيديو</span>';
+    videoPlayBtn.onclick = function() {
+        videoElement.currentTime = 0;
+        videoElement.play();
+        videoPlayBtn.innerHTML = '<i class="fas fa-pause"></i><span data-ar="إيقاف مؤقت" data-en="Pause" data-ko="일시 정지" data-ja="一時停止">إيقاف مؤقت</span>';
+        videoPlayBtn.onclick = arguments.callee;
+    };
+});
+    </script>
+</body>
+</html>

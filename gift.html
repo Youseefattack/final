@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة خاصة إلى ملك</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 1s;
+        }
+        
+        /* صفحة الدخول */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        
+        .login-container h2 {
+            color: #d23669;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #6d3b47;
+            font-weight: bold;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f3c4d6;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #d23669;
+            outline: none;
+        }
+        
+        .login-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            width: 100%;
+        }
+        
+        .login-btn:hover {
+            background-color: #d23669;
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            color: #ff4757;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        /* صفحة الرسالة (مخفي في البداية) */
+        .message-container {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 2s;
+            text-align: center;
+        }
+        
+        .message-container h1 {
+            color: #d23669;
+            margin-bottom: 20px;
+        }
+        
+        .message-container p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #6d3b47;
+        }
+        
+        .heart {
+            font-size: 40px;
+            color: #ff4757;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .heart:hover {
+            transform: scale(1.2);
+        }
+        
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff4f6;
+            border-radius: 10px;
+            animation: slideUp 1s;
+        }
+        
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            display: none;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        /* الأنيميشنات */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحة الدخول -->
+    <div class="login-container" id="loginContainer">
+        <h2>مرحباً بكِ في رسالتي الخاصة</h2>
+        <div class="input-group">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" id="username" placeholder="أدخل اسم المستخدم">
+        </div>
+        <div class="input-group">
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" placeholder="أدخل كلمة المرور">
+        </div>
+        <button class="login-btn" onclick="checkLogin()">دخول</button>
+        <div class="error-message" id="errorMessage">اسم المستخدم أو كلمة المرور غير صحيحة!</div>
+    </div>
+    
+    <!-- صفحة الرسالة (مخفي في البداية) -->
+    <div class="message-container" id="messageContainer">
+        <h1>إلى حبيبتي ملك ❤️</h1>
+        
+        <p>في كل لحظة تمر، أجد قلبي يتذكر كم أنتِ مميزة في حياتي.</p>
+        <p>شكراً لأنك في  حياتي يا أجمل ملك .</p>
+        
+        <div class="heart" onclick="showMessage()">❤️</div>
+        
+        <div id="hiddenMessage" class="hidden-message">
+            <p>بحبك يا بطه وبحب كل حاجه فيكييا نوتي</p>
+            <p>بحبك اوي يا بطتتي❤️</p>
+        </div>
+    </div>
+    
+    <div class="flowers" id="flowers"></div>
+
+    <script>
+        function checkLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // البيانات الصحيحة
+            const correctUsername = "malak";
+            const correctPassword = "1772024";
+            
+            if (username === correctUsername && password === correctPassword) {
+                // إخفاء صفحة الدخول وإظهار الرسالة
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('messageContainer').style.display = 'block';
+                document.getElementById('flowers').style.display = 'block';
+                document.body.style.background = 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)';
+                createFlowers();
+            } else {
+                // عرض رسالة الخطأ
+                errorMessage.style.display = 'block';
+                // هزة للمجموعة عند خطأ
+                document.querySelector('.login-container').style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    document.querySelector('.login-container').style.animation = '';
+                }, 500);
+            }
+        }
+        
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+            
+            // تغيير لون الخلفية
+            document.body.style.background = 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)';
+            
+            // إضافة المزيد من الأزهار
+            createFlowers();
+        }
+        
+        function createFlowers() {
+            const flowersContainer = document.getElementById('flowers');
+            const emojis = ['🌸', '🌹', '🌺', '🌻', '🌼', '💐', '🏵️'];
+            
+            // تنظيف الأزهار القديمة إذا وجدت
+            flowersContainer.innerHTML = '';
+            
+            for (let i = 0; i < 25; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // وضع عشوائي
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + '%';
+                
+                // تأخير مختلف لكل زهرة
+                flower.style.animationDelay = Math.random() * 5 + 's';
+                
+                // حجم مختلف لكل زهرة
+                const size = Math.random() * 20 + 15;
+                flower.style.fontSize = size + 'px';
+                
+                flowersContainer.appendChild(flower);
+            }
+        }
+        
+        // إضافة هزة عند الخطأ
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkLogin();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime & K-Drama Museum | Gift for Queen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Complete collection of popular anime and K-Dramas with direct watch links">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+        
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --accent-color: #ff758c;
+            --text-color: #333;
+            --light-bg: #f5f0ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e8f4ff 100%);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0,0,0,0.15);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+        }
+        
+        .nav a:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 4rem 0;
+            font-size: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 180px;
+            height: 6px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 1.5rem auto;
+            border-radius: 3px;
+        }
+        
+        /* Anime Gallery */
+        .anime-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .anime-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .anime-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .anime-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .anime-info {
+            padding: 2rem;
+        }
+        
+        .anime-info h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-size: 1.6rem;
+        }
+        
+        .anime-info p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .watch-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .watch-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.4);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+        }
+        
+        /* K-Drama Section */
+        .kdrama-section {
+            background: linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .kdrama-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .kdrama-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+        }
+        
+        .kdrama-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+        }
+        
+        .kdrama-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .kdrama-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .kdrama-details {
+            padding: 2rem;
+        }
+        
+        .kdrama-details h3 {
+            margin-bottom: 1rem;
+            color: #d23369;
+            font-size: 1.6rem;
+        }
+        
+        .kdrama-details .meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .kdrama-details p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Korean Culture Section */
+        .culture-section {
+            margin: 5rem 0;
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .culture-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .culture-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .culture-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .culture-content {
+            padding: 2rem;
+        }
+        
+        .culture-content h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.7rem;
+        }
+        
+        .culture-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+            opacity: 0.08;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .footer p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .social-icons {
+            margin: 2.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.15);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.2) translateY(-5px);
+            color: #ffc107;
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        
+        .copyright {
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .nav a {
+                margin: 0 1.2rem;
+                padding: 0.7rem 1.8rem;
+            }
+            
+            .anime-gallery, .kdrama-list, .culture-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .header {
+                padding: 3rem 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.2rem;
+            }
+            
+            .nav a {
+                margin: 0 1rem;
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .anime-card img, .kdrama-card img {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                padding: 1rem;
+            }
+            
+            .nav a {
+                margin: 0.5rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin: 3rem 0;
+            }
+            
+            .anime-gallery, .kdrama-list, .culture-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .kdrama-section {
+                padding: 3rem;
+            }
+            
+            .anime-card img, .kdrama-card img {
+                height: 320px;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin: 2.5rem 0;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .kdrama-section {
+                padding: 2rem;
+            }
+            
+            .anime-info, .kdrama-details, .culture-content {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Animation Effects */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+        
+        /* Hover Effects */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <header class="header">
+        <h1>Anime & K-Drama Museum 💖</h1>
+        <p>A special gift for my queen... A world of magic, romance, and Asian dramas you love</p>
+    </header>
+    
+    <nav class="nav">
+        <a href="#anime">Anime</a>
+        <a href="#kdrama">K-Dramas</a>
+        <a href="#culture">Korean Culture</a>
+        <a href="#gift">Your Gift</a>
+    </nav>
+    
+    <div class="container">
+        <!-- Anime Section -->
+        <section id="anime">
+            <h2 class="section-title">Best Anime Works 💫</h2>
+            <div class="anime-gallery">
+                <!-- Anime 1 - Haikyuu!! -->
+                <div class="anime-card animate">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzQ1MmJjZDUtMmI5OC00ZDk2LThkODQtODgwYmU0MTIzNDhmXkEyXkFqcGdeQXVyNDgyODgxNjE@._V1_FMjpg_UX1000_.jpg" alt="Haikyuu!!">
+                    <div class="anime-info">
+                        <h3>Haikyuu!!</h3>
+                        <p>Inspired by a championship match he sees on TV, Shoyo Hinata joins his school's volleyball team and aims to become the next "Little Giant".</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(8.7/10)</span>
+                        </div>
+                        <a href="https://www.crunchyroll.com/series/GR751KNZY/haikyu" target="_blank" class="watch-btn">Watch on Crunchyroll</a>
+                    </div>
+                </div>
+                
+                <!-- Anime 2 - Attack on Titan -->
+                <div class="anime-card animate delay-1">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_FMjpg_UX1000_.jpg" alt="Attack on Titan">
+                    <div class="anime-info">
+                        <h3>Attack on Titan</h3>
+                        <p>After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(9.0/10)</span>
+                        </div>
+                        <a href="https://www.netflix.com/title/80093959" target="_blank" class="watch-btn">Watch on Netflix</a>
+                    </div>
+                </div>
+                
+                <!-- Anime 3 - Demon Slayer -->
+                <div class="anime-card animate delay-2">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjZjNzI5MDctY2Y4YS00NmM4LTljMmItZTFkOTExNGI3ODRhXkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_FMjpg_UX1000_.jpg" alt="Demon Slayer">
+                    <div class="anime-info">
+                        <h3>Demon Slayer</h3>
+                        <p>After his family is slaughtered by demons, Tanjiro Kamado joins the Demon Slayer Corps to turn his sister Nezuko back into a human.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(8.7/10)</span>
+                        </div>
+                        <a href="https://www.hulu.com/series/demon-slayer-kimetsu-no-yaiba-9e6b1a1a-8a04-4e39-9d3f-20f5e2443a8f" target="_blank" class="watch-btn">Watch on Hulu</a>
+                    </div>
+                </div>
+                
+                <!-- Anime 4 - Jujutsu Kaisen -->
+                <div class="anime-card animate delay-3">
+                    <img src="JujutsuKaisen.jpg" alt="Jujutsu Kaisen">
+                    <div class="anime-info">
+                        <h3>Jujutsu Kaisen</h3>
+                        <p>Yuji Itadori swallows a cursed talisman and becomes host to a powerful curse. He joins a secret organization to fight curses and exorcise himself.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(8.6/10)</span>
+                        </div>
+                        <a href="https://www.crunchyroll.com/series/GRDV0019R/jujutsu-kaisen" target="_blank" class="watch-btn">Watch on Crunchyroll</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- K-Drama Section -->
+        <section id="kdrama" class="kdrama-section">
+            <h2 class="section-title">Popular K-Dramas 🎭</h2>
+            <div class="kdrama-list">
+                <!-- Drama 1 -->
+                <div class="kdrama-card animate">
+                    <img src="lovenextdoor.jpg" alt="Love Next Door">
+                    <div class="kdrama-details">
+                        <h3>Love Next Door</h3>
+                        <div class="meta">
+                            <span><i class="far fa-calendar-alt"></i> 2023</span>
+                            <span><i class="fas fa-list-ol"></i> 12 episodes</span>
+                            <span><i class="fas fa-heart"></i> Romance, Comedy</span>
+                        </div>
+                        <p>A romantic comedy about neighbors sharing the same building whose relationship develops from hate to love with many funny and touching situations.</p>
+                        <a href="https://www.netflix.com/title/81615976" target="_blank" class="watch-btn">Watch on Netflix</a>
+                    </div>
+                </div>
+                
+                <!-- Drama 2 -->
+                <div class="kdrama-card animate delay-1">
+                    <img src="goodboy.jpg" alt="Good Boy">
+                    <div class="kdrama-details">
+                        <h3>Good Boy</h3>
+                        <div class="meta">
+                            <span><i class="far fa-calendar-alt"></i> 2023</span>
+                            <span><i class="fas fa-list-ol"></i> 16 episodes</span>
+                            <span><i class="fas fa-heart"></i> Romance, Drama</span>
+                        </div>
+                        <p>A story about a perfect guy who falls in love with an unconventional girl who changes his life, presenting a realistic picture of love and relationship challenges.</p>
+                        <a href="https://www.viki.com/tv/38521c-good-boy" target="_blank" class="watch-btn">Watch on Viki</a>
+                    </div>
+                </div>
+                
+                <!-- Drama 3 -->
+                <div class="kdrama-card animate delay-2">
+                    <img src="lovelyrunner.jpg" alt="Lovely Runner">
+                    <div class="kdrama-details">
+                        <h3>Lovely Runner</h3>
+                        <div class="meta">
+                            <span><i class="far fa-calendar-alt"></i> 2024</span>
+                            <span><i class="fas fa-list-ol"></i> 16 episodes</span>
+                            <span><i class="fas fa-heart"></i> Romance, Sports</span>
+                        </div>
+                        <p>A love story between a professional runner and her strict coach, showing how love overcomes all difficulties and professional pressures.</p>
+                        <a href="https://www.iq.com/album/lovely-runner-2024-1a3h6j9k8l" target="_blank" class="watch-btn">Watch on iQIYI</a>
+                    </div>
+                </div>
+
+                <!-- Drama 4 -->
+                <div class="kdrama-card animate delay-3">
+                    <img src="20thcenturygirl.jpg" alt="21st Century Girl">
+                    <div class="kdrama-details">
+                        <h3>21st Century Girl</h3>
+                        <div class="meta">
+                            <span><i class="far fa-calendar-alt"></i> 2022</span>
+                            <span><i class="fas fa-list-ol"></i> 12 episodes</span>
+                            <span><i class="fas fa-heart"></i> Drama, Youth</span>
+                        </div>
+                        <p>The story of a modern girl facing life, work, and love challenges in modern times, providing deep insight into working women's lives in Korea.</p>
+                        <a href="https://www.kocowa.com/en_us/play/eyJ0eXBlIjoiU0VSSUVTIiwiaWQiOiJTVDAwMDQyNDEifQ==" target="_blank" class="watch-btn">Watch on KOCOWA</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Korean Culture Section -->
+        <section id="culture" class="culture-section">
+            <h2 class="section-title">Explore Korean Culture 🇰🇷</h2>
+            <div class="culture-grid">
+                <!-- Culture 1 -->
+                <div class="culture-card animate">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1482&q=80" alt="Korean Cuisine">
+                    <div class="culture-content">
+                        <h3>Delicious Korean Cuisine</h3>
+                        <p>Discover the secrets of kimchi, bibimbap, tteokbokki and other delicious Korean dishes. Learn how to prepare the most delicious Korean dishes at home with easy recipes and simple steps.</p>
+                        <a href="https://www.maangchi.com/" target="_blank" class="watch-btn">Learn Korean Cooking</a>
+                    </div>
+                </div>
+                
+                <!-- Culture 2 -->
+                <div class="culture-card animate delay-1">
+                    <img src="golden1.jpg" alt="Jungkook Golden Album">
+                    <div class="culture-content">
+                        <h3>Jungkook's Golden Album</h3>
+                        <p>Listen to the debut solo album by Jungkook of BTS, containing a collection of diverse songs that reflect his unique artistic talent.</p>
+                        <a href="https://open.spotify.com/album/5zPOrJQedP3VFxS8OHs5Xg" target="_blank" class="watch-btn">Listen on Spotify</a>
+                    </div>
+                </div>
+                
+                <!-- Culture 3 -->
+                <div class="culture-card animate delay-2">
+                    <img src="soeul.jpg" alt="Tourist Places">
+                    <div class="culture-content">
+                        <h3>Most Beautiful Places in Korea</h3>
+                        <p>Plan your future trip to Seoul, Busan, Jeju and other charming cities. Discover tourist attractions, restaurants, and best places to stay.</p>
+                        <a href="https://english.visitkorea.or.kr/enu/index.kto" target="_blank" class="watch-btn">Korean Tourism Site</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- أضف هذا القسم قبل footer -->
+<section id="gift" class="gift-section">
+    <h2 class="section-title">Your Special Gift 🎁</h2>
+    <div class="gift-container animate">
+        <div class="gift-box">
+            <div class="ribbon"></div>
+            <div class="bow">
+                <div class="bow-center"></div>
+                <div class="loop left"></div>
+                <div class="loop right"></div>
+            </div>
+            <div class="gift-content">
+                <h3>To My Queen 👑</h3>
+                <div class="message">
+                    <p>"Every moment with you is like my favorite anime scene - full of color, emotion, and beauty. This year, I gift you:</p>
+                    <ul>
+                        <li><i class="fas fa-heart"></i> A romantic weekend getaway</li>
+                        <li><i class="fas fa-ticket-alt"></i> VIP tickets to your favorite K-pop concert</li>
+                        <li><i class="fas fa-tshirt"></i> Limited edition BTS merchandise collection</li>
+                        <li><i class="fas fa-utensils"></i> Dinner at the finest Korean restaurant</li>
+                    </ul>
+                    <p>But most importantly, my endless love and all the anime/K-drama marathons you desire!"</p>
+                </div>
+                <button class="open-gift-btn" id="openGiftBtn">Open Your Gift</button>
+            </div>
+        </div>
+        <div class="hidden-gift" id="hiddenGift">
+            <img src="https://i.pinimg.com/originals/3d/64/a2/3d64a2e35fdf7a9d4b6941a9f122b4e2.png" alt="BTS Concert Tickets">
+            <div class="gift-details">
+                <h3>Surprise! BTS Concert Experience</h3>
+                <p>2 VIP tickets to BTS concert in Seoul + Backstage Pass + Hotel Accommodation</p>
+                <small>*Actual dates will be coordinated based on your schedule and concert dates</small>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Made with all my love for you 💖</p>
+            <p>Every year you're the light of my life</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://open.spotify.com/" target="_blank"><i class="fab fa-spotify"></i></a>
+            </div>
+            <p class="copyright">© 2024 Anime & K-Drama Museum. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // JavaScript for the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+                
+                // Change nav link colors on scroll
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav a');
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 300) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.style.background = 'transparent';
+                    link.style.borderColor = 'transparent';
+                    if (link.getAttribute('href').includes(current)) {
+                        link.style.background = 'rgba(255,255,255,0.25)';
+                        link.style.borderColor = 'rgba(255,255,255,0.3)';
+                    }
+                });
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Animation effects on scroll
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const animateOnScroll = function() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+            
+            // Card hover effects
+            const cards = document.querySelectorAll('.anime-card, .kdrama-card, .culture-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                });
+                
+                card.addEventListener('mouseenter', function() {
+                    card.style.transition = 'none';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                });
+            });
+            
+            // Add sound effects
+            const buttons = document.querySelectorAll('a, button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+                    audio.volume = 0.3;
+                    audio.play();
+                });
+            });
+            
+            // Dynamic data loading (can be expanded)
+            async function loadData() {
+                try {
+                    // Can add API here to fetch data
+                    console.log('Loading data...');
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                }
+            }
+            
+            loadData();
+        });
+    </script>
+</body>
+</html>
