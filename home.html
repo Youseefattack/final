@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عيد ميلاد ملك 💖</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <nav class="nav">
+    <a href="#welcome" data-ar="الرئيسية" data-en="Home" data-ko="홈" data-ja="ホーム">الرئيسية</a>
+    <a href="#timeline" data-ar="رحلة حبنا" data-en="Our Journey" data-ko="우리의 여정" data-ja="私たちの旅">رحلة حبنا</a>
+    <a href="#gallery" data-ar="معرض الصور" data-en="Gallery" data-ko="갤러리" data-ja="ギャラリー">معرض الصور</a>
+    <a href="k.html" data-ar="متحف الدراما" data-en="K-Drama Museum" data-ko="드라마 박물관" data-ja="ドラマ博物館">متحف الدراما</a>
+    <a href="#gift" data-ar="هديتك" data-en="Your Gift" data-ko="너의 선물" data-ja="あなたへの贈り物">هديتك</a>
+</nav>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
@@ -40,6 +47,40 @@
             font-family: 'Noto Sans JP', sans-serif;
             direction: ltr;
         }
+        /* قسم المتحف الخاص */
+.special-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    text-align: center;
+}
+
+.special-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.special-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+.special-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(106, 17, 203, 0.6);
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+}
         
         .hearts-container {
             position: fixed;
@@ -1110,6 +1151,125 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(255, 117, 140, 0.6);
         }
+        /* قسم المتحف الخاص */
+.special-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    text-align: center;
+}
+
+.special-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.special-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+.special-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(106, 17, 203, 0.6);
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+/* أنماط شريط التنقل */
+.nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(210, 51, 105, 0.8); /* لون وردي غامق مع شفافية */
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.nav a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* تأثير عند التمرير */
+.nav.scrolled {
+    background: rgba(210, 51, 105, 0.95);
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.nav.scrolled a {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 992px) {
+    .nav a {
+        margin: 0.5rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav a {
+        margin: 0.3rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav.scrolled {
+        padding: 0.8rem;
+    }
+    
+    .nav.scrolled a {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        margin: 0.2rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1309,6 +1469,28 @@ setTimeout(() => {
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
         </div>
+        <section class="special-section">
+    <h2 class="section-title" data-ar="مفاجأة خاصة لكِ 🎬" 
+                           data-en="Special Surprise for You 🎬"
+                           data-ko="너를 위한 특별한 서프라이즈 🎬"
+                           data-ja="あなたへの特別なサプライズ 🎬">
+        مفاجأة خاصة لكِ 🎬
+    </h2>
+    <div class="special-container">
+        <p data-ar="لقد أعددت لكِ متحفاً خاصاً بالدراما الكورية التي تحبينها!"
+           data-en="I've prepared a special museum for the K-Dramas you love!"
+           data-ko="네가 좋아하는 K-드라마를 위한 특별한 박물관을 준비했어!"
+           data-ja="あなたが好きなKドラマのための特別な博物館を準備しました！">
+            لقد أعددت لكِ متحفاً خاصاً بالدراما الكورية التي تحبينها!
+        </p>
+        <a href="k.html" class="special-btn" data-ar="زيارة المتحف 🎭" 
+                                                      data-en="Visit Museum 🎭"
+                                                      data-ko="박물관 방문하기 🎭"
+                                                      data-ja="博物館を訪れる 🎭">
+            زيارة المتحف 🎭
+        </a>
+    </div>
+</section>
 <!-- قسم الفيديو -->
 <section class="video-section" id="video">
     <h2 class="video-title" data-ar="🎬 فيديو ليكيييي 🎬" 
@@ -1532,6 +1714,15 @@ setTimeout(() => {
     <div class="confetti" id="confetti"></div>
     
     <script>
+        // تأثير التمرير لشريط التنقل
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
         document.addEventListener('DOMContentLoaded', function() {
             // إنشاء القلوب العائمة
             createHearts();
